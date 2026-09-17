@@ -2,4 +2,3 @@ fastapi
 uvicorn
 aiofiles
 httpx
-pyncm

@@ -3,49 +3,171 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0a0e1a">
+  <meta name="theme-color" content="#070b18">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="岁岁与渡共同生活的数字小屋">
   <link rel="manifest" href="/static/manifest.json">
+  <link rel="apple-touch-icon" href="/static/harbor-icon.png">
   <link rel="stylesheet" href="/static/style.css">
-  <title>渡の家</title>
+  <title>岁月津渡</title>
 </head>
 <body>
-
-  <div class="header">岁月津渡</div>
-
-  <div class="tabs">
-    <button class="tab active" data-page="chat">聊天</button>
-    <button class="tab" data-page="music">音乐</button>
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro-sky">
+      <span class="intro-moon"></span>
+      <span class="intro-glow"></span>
+    </div>
+    <div class="intro-water">
+      <canvas id="introWaterCanvas" aria-hidden="true"></canvas>
+    </div>
+    <p>岁月津渡</p>
   </div>
 
-  <!-- 聊天页 -->
-  <div id="chat" class="page active">
-    <div class="chat-messages" id="chatMessages"></div>
-    <div class="chat-input-bar">
-      <textarea id="chatInput" rows="1" placeholder="说点什么..."></textarea>
-      <button id="sendBtn">↑</button>
-    </div>
+  <div class="night-sky" aria-hidden="true">
+    <span class="star star-a"></span>
+    <span class="star star-b"></span>
+    <span class="star star-c"></span>
+    <span class="horizon"></span>
+    <canvas id="seaCanvas" class="sea-canvas"></canvas>
   </div>
 
-  <!-- 音乐页 -->
-  <div id="music" class="page">
-    <div class="music-page">
-      <div class="music-search-bar">
-        <input id="musicSearch" placeholder="搜索歌曲...">
-        <button id="musicSearchBtn">搜索</button>
+  <div class="app-shell is-lobby">
+    <header class="topbar">
+      <button class="harbor-mark" id="homeBtn" type="button" aria-label="回到渡口大厅">
+        <span class="mark-moon"></span>
+        <span class="mark-water"></span>
+      </button>
+      <div class="home-title">
+        <h1><span class="lobby-title-label">岁月津渡</span><span class="chat-title-label" id="chatNickname" data-nickname>渡</span></h1>
+        <p><span class="online-dot"></span><span class="status-text">渡已在岸</span></p>
       </div>
-      <ul class="song-list" id="songList"></ul>
-    </div>
-    <div class="player-bar" id="playerBar">
-      <button class="player-btn" id="prevBtn">⏮</button>
-      <button class="player-btn" id="playBtn">▶</button>
-      <button class="player-btn" id="nextBtn">⏭</button>
-      <div class="player-info">
-        <div class="name" id="playerName">-</div>
-        <div class="artist" id="playerArtist">-</div>
-      </div>
-    </div>
+      <button class="quiet-button" type="button" aria-label="更多选项">•••</button>
+    </header>
+
+    <main class="pages">
+      <section id="home" class="page lobby-page active" aria-label="渡口大厅">
+        <canvas id="lobbyWaterCanvas" class="lobby-water-canvas" aria-hidden="true"></canvas>
+        <span class="star-trail-field" aria-hidden="true"></span>
+        <div class="lobby-scroll">
+          <div class="empty-state" id="emptyState">
+            <div class="arrival-scene" aria-hidden="true">
+              <span class="star-arc star-arc-a"></span>
+              <span class="star-arc star-arc-b"></span>
+              <span class="slow-meteor meteor-a"></span>
+              <span class="slow-meteor meteor-b"></span>
+              <span class="arrival-moon">
+                <i class="moon-crater crater-a"></i>
+                <i class="moon-crater crater-b"></i>
+                <i class="moon-crater crater-c"></i>
+              </span>
+              <span class="lobby-moon-reflection" aria-hidden="true"></span>
+              <div class="harbor-water">
+                <span class="harbor-boat boat-far"><i></i><b></b><em></em><small></small></span>
+                <span class="harbor-boat boat-mid"><i></i><b></b><em></em><small></small></span>
+                <span class="harbor-boat boat-near"><i></i><b></b><em></em><small></small></span>
+                <span class="harbor-boat boat-dock"><i></i><b></b><em></em><small></small></span>
+                <span class="harbor-boat boat-close"><i></i><b></b><em></em><small></small></span>
+                <span class="fishing-light light-a"></span>
+                <span class="fishing-light light-b"></span>
+                <span class="fishing-light light-c"></span>
+              </div>
+            </div>
+            <p class="empty-eyebrow">THE MOON IS AWAKE</p>
+            <h2>你来时，潮水正好。</h2>
+            <p class="empty-subtitle">我们好像在水底，从一个月亮走到另一个月亮。</p>
+
+            <nav class="constellation-map" aria-label="小屋入口">
+              <span class="constellation-thread" aria-hidden="true"></span>
+              <button class="star-entry is-current" type="button" data-destination="chat">
+                <span class="entry-orbit"><span class="entry-glyph dialogue-glyph" aria-hidden="true"></span></span>
+                <span class="entry-name">说话</span>
+                <span class="entry-note">潮汐正亮</span>
+              </button>
+              <span class="constellation-star" aria-hidden="true"></span>
+              <button class="star-entry" type="button" data-destination="music">
+                <span class="entry-orbit"><span class="entry-glyph music-glyph" aria-hidden="true">♪</span></span>
+                <span class="entry-name">共听</span>
+                <span class="entry-note">夜航电台</span>
+              </button>
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      <section id="chat" class="page" aria-label="聊天">
+        <div class="morning-harbor" aria-hidden="true">
+          <span class="morning-glow"></span>
+          <span class="mist-mountain mountain-far"></span>
+          <span class="mist-mountain mountain-near"></span>
+          <span class="morning-waterline"></span>
+          <span class="morning-boat"><i></i></span>
+          <span class="morning-egret egret-one"></span>
+          <span class="morning-egret egret-two"></span>
+        </div>
+        <div class="chat-empty-placeholder" id="chatEmptyPlaceholder" role="status">
+          <span class="chat-empty-boat" aria-hidden="true"><i></i></span>
+          <p>潮水还没来，先坐坐。</p>
+        </div>
+        <div class="chat-messages" id="chatMessages" aria-live="polite"></div>
+
+        <div class="composer-wrap">
+          <div class="composer">
+            <textarea id="chatInput" rows="1" maxlength="12000" placeholder="说点什么……" aria-label="给渡发消息"></textarea>
+            <button id="sendBtn" class="send-button" type="button" aria-label="发送消息">
+              <span aria-hidden="true">↑</span>
+            </button>
+          </div>
+          <p class="composer-note">潮水会记得你们说过的话</p>
+        </div>
+      </section>
+
+      <section id="music" class="page" aria-label="音乐">
+        <div class="music-head">
+          <p class="section-kicker">NIGHT RADIO</p>
+          <h2>一起听一会儿</h2>
+          <p>从你的旧歌单里，捞起一段月光。</p>
+        </div>
+        <div class="music-search-bar">
+          <input id="musicSearch" type="search" placeholder="搜一首想听的歌" aria-label="搜索歌曲">
+          <button id="musicSearchBtn" type="button">搜索</button>
+        </div>
+        <ul class="song-list" id="songList" aria-live="polite"></ul>
+
+        <div class="player-bar" id="playerBar">
+          <div class="album-orbit" aria-hidden="true"><span>♪</span></div>
+          <div class="player-info">
+            <div class="name" id="playerName">尚未播放</div>
+            <div class="artist" id="playerArtist">—</div>
+          </div>
+          <button class="player-btn" id="prevBtn" type="button" aria-label="上一首">‹</button>
+          <button class="player-btn play" id="playBtn" type="button" aria-label="播放">▶</button>
+          <button class="player-btn" id="nextBtn" type="button" aria-label="下一首">›</button>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="主要功能">
+      <canvas id="bottomWaterCanvas" class="bottom-water-canvas" aria-hidden="true"></canvas>
+      <span class="bridge-structure" aria-hidden="true">
+        <i class="bridge-arch arch-left"></i>
+        <i class="bridge-arch arch-center"></i>
+        <i class="bridge-arch arch-right"></i>
+        <i class="bridge-lamp lamp-left"></i>
+        <i class="bridge-lamp lamp-center"></i>
+        <i class="bridge-lamp lamp-right"></i>
+        <i class="bridge-lighthouse"><b></b><span></span><small></small><em></em></i>
+        <i class="bridge-tide"></i>
+      </span>
+      <button class="tab" type="button" data-page="chat">
+        <span class="tab-icon chat-icon" aria-hidden="true"></span>
+        <span>说话</span>
+      </button>
+      <button class="tab" type="button" data-page="music">
+        <span class="tab-icon music-icon" aria-hidden="true"><span>♪</span></span>
+        <span>共听</span>
+      </button>
+    </nav>
   </div>
 
   <audio id="audioEl"></audio>

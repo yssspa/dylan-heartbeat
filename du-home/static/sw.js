@@ -1,5 +1,5 @@
-const CACHE_NAME = "du-home-v1";
-const PRECACHE = ["/", "/static/app.js", "/static/style.css"];
+const CACHE_NAME = "du-home-v26";
+const PRECACHE = ["/", "/static/app.js", "/static/style.css", "/static/manifest.json", "/static/harbor-icon.png", "/static/moon-gibbous-v3.png", "/static/morning-harbor-v1.png"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(

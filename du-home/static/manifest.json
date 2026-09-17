@@ -1,5 +1,5 @@
 {
-  "name": "渡の家",
+  "name": "岁月津渡",
   "short_name": "渡",
   "start_url": "/",
   "display": "standalone",
@@ -7,14 +7,10 @@
   "theme_color": "#0a0e1a",
   "icons": [
     {
-      "src": "/static/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "/static/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "/static/harbor-icon.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

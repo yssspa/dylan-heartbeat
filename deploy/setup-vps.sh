@@ -95,23 +95,12 @@ echo "（用 sudo nano /etc/caddy/Caddyfile 编辑）"
 echo ""
 cat << 'CADDYEOF'
 # --- 岁月津渡 ---
-# 如果 dusui.xyz 已有其他路由，把下面这段加到对应 block 里
-# 如果要用子域名，把 dusui.xyz 改成 home.dusui.xyz
-
-# handle /api/* {
-#     reverse_proxy 127.0.0.1:8900
-# }
-# handle /static/* {
-#     reverse_proxy 127.0.0.1:8900
-# }
-# handle / {
-#     reverse_proxy 127.0.0.1:8900
-# }
-
-# 或者如果这个域名/子域名完全给岁月津渡用：
+# 在 Caddyfile 中添加以下独立站点块：
 # home.dusui.xyz {
 #     reverse_proxy 127.0.0.1:8900
 # }
+#
+# 注意：不要修改 dusui.xyz 的现有配置
 CADDYEOF
 
 echo ""

@@ -1,0 +1,16 @@
+{
+  "name": "岁月津渡",
+  "short_name": "渡",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#091b2a",
+  "theme_color": "#091b2a",
+  "icons": [
+    {
+      "src": "/static/harbor-icon.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

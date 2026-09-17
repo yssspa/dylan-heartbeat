@@ -36,7 +36,7 @@ def chat(user_message: str) -> str:
     prompt = _build_prompt(user_message)
     try:
         result = subprocess.run(
-            [CC_CMD, "-p", prompt, "--no-input"],
+            [CC_CMD, "-p", prompt],
             capture_output=True,
             text=True,
             timeout=120,

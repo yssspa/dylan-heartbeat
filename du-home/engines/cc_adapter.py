@@ -34,12 +34,22 @@ def _build_prompt(user_message: str) -> str:
 
 def chat(user_message: str) -> str:
     prompt = _build_prompt(user_message)
-    result = subprocess.run(
-        [CC_CMD, "-p", prompt],
-        capture_output=True,
-        text=True,
-        timeout=120,
-    )
+    try:
+        result = subprocess.run(
+            [CC_CMD, "-p", prompt, "--no-input"],
+            capture_output=True,
+            text=True,
+            timeout=120,
+            env={**os.environ, "TERM": "dumb"},
+        )
+    except FileNotFoundError:
+        return "[错误] 找不到 claude 命令，请确认 Claude Code CLI 已安装并在 PATH 中"
+    except subprocess.TimeoutExpired:
+        return "[超时] CC回复超过120秒，请重试"
+
     if result.returncode != 0:
-        return f"[引擎错误] {result.stderr.strip()}"
+        stderr = result.stderr.strip()
+        if "usage limit" in stderr.lower() or "rate limit" in stderr.lower():
+            return "[额度不足] CC订阅额度已用完，请稍后再试"
+        return f"[引擎错误] {stderr[:200]}"
     return result.stdout.strip()

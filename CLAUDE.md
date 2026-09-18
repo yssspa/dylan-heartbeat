@@ -190,7 +190,7 @@
 
 | 优先级 | 事项 | 状态 |
 |--------|------|------|
-| 1 | 共听页音乐接口对接VPS 3304端口 | 待改music.py |
+| 1 | 共听页音乐接口对接VPS 3304端口 | 已改，httpx→NeteaseCloudMusicApi，待VPS拉取 |
 | 2 | 共听页情头头像 | 岁岁选图中 |
 | 3 | stack-chan接入Claude API | 用本地CC执行 |
 | 4 | Du-Round摄像头板到货装上 | 等发货（XIAO ESP32S3 Sense ¥118.9） |

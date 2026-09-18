@@ -53,7 +53,7 @@ DU_API_MODEL=claude-sonnet-4-20250514
 DU_HISTORY_LIMIT=20
 
 # 网易云音乐 API 地址
-DU_MUSIC_API_URL=http://localhost:3000
+DU_MUSIC_API_URL=http://localhost:3304
 
 # 服务端口
 DU_PORT=8900

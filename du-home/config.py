@@ -16,7 +16,7 @@ API_MODEL = os.getenv("DU_API_MODEL", "claude-opus-4-6")
 HISTORY_LIMIT = int(os.getenv("DU_HISTORY_LIMIT", "20"))
 
 # 网易云音乐接口地址（你VPS上跑的那个）
-MUSIC_API_URL = os.getenv("DU_MUSIC_API_URL", "http://localhost:3000")
+MUSIC_API_URL = os.getenv("DU_MUSIC_API_URL", "http://localhost:3304")
 
 # 服务端口
 PORT = int(os.getenv("DU_PORT", "8900"))

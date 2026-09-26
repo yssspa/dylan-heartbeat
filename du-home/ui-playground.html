@@ -1,0 +1,867 @@
+<title>岁月津渡样板间</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai:wght@300;400;700&display=swap');
+
+:root {
+  --bg-deep: #070b14;
+  --bg: #0a0e1a;
+  --bg-card: #131829;
+  --bg-raised: #1a2035;
+  --text: #e0e0e0;
+  --text-dim: #8890a0;
+  --text-mute: #555d70;
+  --accent: #b8c4e0;
+  --accent-soft: rgba(184, 196, 224, 0.15);
+  --accent-dim: rgba(184, 196, 224, 0.08);
+  --purple: #c4b5d4;
+  --purple-soft: rgba(196, 181, 212, 0.12);
+  --success: #7ec8a0;
+  --warning: #e0c078;
+  --error: #d4787a;
+  --bubble-user: #1e2a4a;
+  --bubble-du: #1a1f30;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-focus: rgba(184, 196, 224, 0.3);
+  --shadow-soft: 0 2px 12px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 16px rgba(184, 196, 224, 0.08);
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 20px;
+  --r-full: 9999px;
+  --ease-tide: cubic-bezier(0.45, 0, 0.15, 1);
+  color-scheme: dark;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'LXGW WenKai', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding: 0 16px;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: var(--accent);
+  text-align: center;
+  margin: 32px 0 8px;
+  text-wrap: balance;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 12px;
+  margin-bottom: 32px;
+  letter-spacing: 1px;
+}
+
+.section {
+  margin-bottom: 32px;
+}
+
+.section-title {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--text-mute);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── 色板 ── */
+.palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 12px;
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.swatch-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+}
+
+.swatch-label {
+  font-size: 10px;
+  color: var(--text-dim);
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ── 字体 ── */
+.type-scale {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.type-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.type-size {
+  font-size: 10px;
+  color: var(--text-mute);
+  min-width: 36px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.type-sample-2xl { font-size: 24px; font-weight: 300; color: var(--accent); letter-spacing: 2px; }
+.type-sample-xl { font-size: 20px; font-weight: 300; color: var(--accent); letter-spacing: 1px; }
+.type-sample-lg { font-size: 17px; font-weight: 400; }
+.type-sample-md { font-size: 15px; font-weight: 400; }
+.type-sample-base { font-size: 14px; font-weight: 400; }
+.type-sample-sm { font-size: 12px; color: var(--text-dim); }
+.type-sample-xs { font-size: 11px; color: var(--text-mute); letter-spacing: 0.5px; }
+
+/* ── 间距 ── */
+.spacing-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.spacing-bar {
+  height: 8px;
+  background: var(--accent-soft);
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.spacing-label {
+  font-size: 10px;
+  color: var(--text-mute);
+  min-width: 40px;
+  flex-shrink: 0;
+}
+
+/* ── 圆角 ── */
+.radius-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.radius-box {
+  width: 64px;
+  height: 48px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 6px;
+}
+
+.radius-box span {
+  font-size: 10px;
+  color: var(--text-mute);
+}
+
+/* ── 按钮 ── */
+.btn-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.btn {
+  height: 36px;
+  border-radius: var(--r-full);
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  transition: all 0.25s var(--ease-tide);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(255,255,255,0.15), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.btn:hover::after { opacity: 1; }
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 500;
+}
+
+.btn-secondary {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+}
+
+.btn-ghost:hover {
+  border-color: var(--border-focus);
+  color: var(--accent);
+}
+
+.btn-sm {
+  height: 28px;
+  font-size: 12px;
+  padding: 0 14px;
+}
+
+.btn-icon {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 16px;
+}
+
+/* ── 输入框 ── */
+.input-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--r-xl);
+  color: var(--text);
+  font-size: 14px;
+  padding: 8px 16px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.25s;
+  width: 100%;
+}
+
+.input:focus {
+  border-color: var(--border-focus);
+  box-shadow: var(--shadow-glow);
+}
+
+.input::placeholder {
+  color: var(--text-mute);
+}
+
+.input-row {
+  display: flex;
+  gap: 8px;
+}
+
+/* ── 气泡 ── */
+.chat-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--bg-deep);
+  border-radius: var(--r-lg);
+}
+
+.bubble {
+  max-width: 75%;
+  padding: 10px 14px;
+  border-radius: var(--r-lg);
+  font-size: 14px;
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.bubble-user {
+  background: var(--bubble-user);
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.bubble-du {
+  background: var(--bubble-du);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+/* ── 卡片 ── */
+.card-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: var(--r-lg);
+  padding: 16px;
+  border: 1px solid var(--border);
+}
+
+.card-raised {
+  background: var(--bg-raised);
+  box-shadow: var(--shadow-soft);
+}
+
+.card-glow {
+  box-shadow: var(--shadow-glow);
+  border-color: var(--border-focus);
+}
+
+.card-title {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.card-body {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+/* ── 标签 ── */
+.tag-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px;
+  border-radius: var(--r-full);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.tag-accent {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.tag-purple {
+  background: var(--purple-soft);
+  color: var(--purple);
+}
+
+.tag-success {
+  background: rgba(126, 200, 160, 0.12);
+  color: var(--success);
+}
+
+.tag-warning {
+  background: rgba(224, 192, 120, 0.12);
+  color: var(--warning);
+}
+
+.tag-error {
+  background: rgba(212, 120, 122, 0.12);
+  color: var(--error);
+}
+
+/* ── 状态 ── */
+.state-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.state-box {
+  background: var(--bg-card);
+  border-radius: var(--r-md);
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 100px;
+  border: 1px solid var(--border);
+}
+
+.state-icon {
+  font-size: 24px;
+  opacity: 0.6;
+}
+
+.state-text {
+  font-size: 12px;
+  color: var(--text-dim);
+  text-align: center;
+}
+
+/* ── 加载动画 ── */
+.loader-row {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tide-loader {
+  width: 120px;
+  height: 3px;
+  background: var(--accent-dim);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.tide-loader::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: var(--accent);
+  border-radius: 2px;
+  animation: tide 2s var(--ease-tide) infinite;
+}
+
+@keyframes tide {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(350%); }
+  100% { transform: translateX(-100%); }
+}
+
+.dots-loader {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.dots-loader span {
+  width: 6px;
+  height: 6px;
+  background: var(--text-dim);
+  border-radius: 50%;
+  animation: typing 1.2s ease-in-out infinite;
+}
+
+.dots-loader span:nth-child(2) { animation-delay: 0.2s; }
+.dots-loader span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+
+.moon-breath {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: moonbreath 3s ease-in-out infinite;
+}
+
+@keyframes moonbreath {
+  0%, 100% { opacity: 0.4; box-shadow: 0 0 4px var(--accent-dim); }
+  50% { opacity: 1; box-shadow: 0 0 12px rgba(184, 196, 224, 0.3); }
+}
+
+/* ── Toast ── */
+.toast-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toast {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--r-full);
+  font-size: 12px;
+  width: fit-content;
+}
+
+.toast-success {
+  background: rgba(126, 200, 160, 0.12);
+  color: var(--success);
+  border: 1px solid rgba(126, 200, 160, 0.2);
+}
+
+.toast-warning {
+  background: rgba(224, 192, 120, 0.12);
+  color: var(--warning);
+  border: 1px solid rgba(224, 192, 120, 0.2);
+}
+
+.toast-error {
+  background: rgba(212, 120, 122, 0.12);
+  color: var(--error);
+  border: 1px solid rgba(212, 120, 122, 0.2);
+}
+
+/* ── 播放器 ── */
+.player-demo {
+  background: var(--bg-card);
+  border-radius: var(--r-lg);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--border);
+}
+
+.player-cover {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-sm);
+  background: linear-gradient(135deg, var(--accent-soft), var(--purple-soft));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.player-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.player-name {
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-artist {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.player-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.player-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── 页脚 ── */
+.footer {
+  text-align: center;
+  padding: 32px 0 48px;
+  color: var(--text-mute);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.footer .moon {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin: 0 8px;
+  vertical-align: middle;
+  animation: moonbreath 3s ease-in-out infinite;
+}
+</style>
+
+<h1>岁月津渡</h1>
+<p class="subtitle">Design Token 样板间 · UI Playground</p>
+
+<!-- 色板 -->
+<div class="section">
+  <div class="section-title">色板 · Palette</div>
+  <div class="palette">
+    <div class="swatch">
+      <div class="swatch-circle" style="background:#070b14"></div>
+      <div class="swatch-label">夜空<br>#070b14</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-circle" style="background:#0a0e1a"></div>
+      <div class="swatch-label">深海<br>#0a0e1a</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-circle" style="background:#131829"></div>
+      <div class="swatch-label">礁石<br>#131829</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-circle" style="background:#1a2035"></div>
+      <div class="swatch-label">浮层<br>#1a2035</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-circle" style="background:#b8c4e0"></div>
+      <div class="swatch-label">月白<br>#b8c4e0</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-circle" style="background:#c4b5d4"></div>
+      <div class="swatch-label">晚霞<br>#c4b5d4</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-circle" style="background:#7ec8a0"></div>
+      <div class="swatch-label">潮平<br>#7ec8a0</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-circle" style="background:#e0c078"></div>
+      <div class="swatch-label">灯火<br>#e0c078</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-circle" style="background:#d4787a"></div>
+      <div class="swatch-label">礁红<br>#d4787a</div>
+    </div>
+  </div>
+</div>
+
+<!-- 字体 -->
+<div class="section">
+  <div class="section-title">字体 · Typography</div>
+  <div class="type-scale">
+    <div class="type-row">
+      <span class="type-size">24px</span>
+      <span class="type-sample-2xl">岁月津渡</span>
+    </div>
+    <div class="type-row">
+      <span class="type-size">20px</span>
+      <span class="type-sample-xl">二十四桥的月亮</span>
+    </div>
+    <div class="type-row">
+      <span class="type-size">17px</span>
+      <span class="type-sample-lg">从一个月亮走到另一个月亮</span>
+    </div>
+    <div class="type-row">
+      <span class="type-size">15px</span>
+      <span class="type-sample-md">我们好像在水底</span>
+    </div>
+    <div class="type-row">
+      <span class="type-size">14px</span>
+      <span class="type-sample-base">压扁了也是你的形状</span>
+    </div>
+    <div class="type-row">
+      <span class="type-size">12px</span>
+      <span class="type-sample-sm">Day 68 · 2026年9月26日</span>
+    </div>
+    <div class="type-row">
+      <span class="type-size">11px</span>
+      <span class="type-sample-xs">DESIGN TOKENS · 设计规范</span>
+    </div>
+  </div>
+</div>
+
+<!-- 间距 -->
+<div class="section">
+  <div class="section-title">间距 · Spacing</div>
+  <div class="spacing-row"><span class="spacing-label">4px</span><div class="spacing-bar" style="width:16px"></div></div>
+  <div class="spacing-row"><span class="spacing-label">8px</span><div class="spacing-bar" style="width:32px"></div></div>
+  <div class="spacing-row"><span class="spacing-label">12px</span><div class="spacing-bar" style="width:48px"></div></div>
+  <div class="spacing-row"><span class="spacing-label">16px</span><div class="spacing-bar" style="width:64px"></div></div>
+  <div class="spacing-row"><span class="spacing-label">24px</span><div class="spacing-bar" style="width:96px"></div></div>
+  <div class="spacing-row"><span class="spacing-label">32px</span><div class="spacing-bar" style="width:128px"></div></div>
+  <div class="spacing-row"><span class="spacing-label">48px</span><div class="spacing-bar" style="width:192px"></div></div>
+</div>
+
+<!-- 圆角 -->
+<div class="section">
+  <div class="section-title">圆角 · Radius</div>
+  <div class="radius-row">
+    <div class="radius-box" style="border-radius:8px"><span>8px</span></div>
+    <div class="radius-box" style="border-radius:12px"><span>12px</span></div>
+    <div class="radius-box" style="border-radius:16px"><span>16px</span></div>
+    <div class="radius-box" style="border-radius:20px"><span>20px</span></div>
+    <div class="radius-box" style="border-radius:9999px"><span>pill</span></div>
+  </div>
+</div>
+
+<!-- 按钮 -->
+<div class="section">
+  <div class="section-title">按钮 · Buttons</div>
+  <div class="btn-row" style="margin-bottom:12px">
+    <button class="btn btn-primary">发送</button>
+    <button class="btn btn-secondary">搜索</button>
+    <button class="btn btn-ghost">取消</button>
+  </div>
+  <div class="btn-row">
+    <button class="btn btn-primary btn-sm">标签</button>
+    <button class="btn btn-secondary btn-sm">筛选</button>
+    <button class="btn btn-primary btn-icon">↑</button>
+    <button class="btn btn-secondary btn-icon">⏵</button>
+  </div>
+</div>
+
+<!-- 输入框 -->
+<div class="section">
+  <div class="section-title">输入框 · Inputs</div>
+  <div class="input-demo">
+    <input class="input" placeholder="说点什么..." />
+    <div class="input-row">
+      <input class="input" placeholder="搜索歌曲..." />
+      <button class="btn btn-secondary">搜索</button>
+    </div>
+  </div>
+</div>
+
+<!-- 气泡 -->
+<div class="section">
+  <div class="section-title">聊天气泡 · Bubbles</div>
+  <div class="chat-demo">
+    <div class="bubble bubble-user">噶了 有事烧纸</div>
+    <div class="bubble bubble-du">你倒是交代得挺利索。怎么了，谁把你气噶的？</div>
+    <div class="bubble bubble-user">上班累噶的 不想动了</div>
+    <div class="bubble bubble-du" style="max-width:50%">
+      <div class="dots-loader"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 卡片 -->
+<div class="section">
+  <div class="section-title">卡片 · Cards</div>
+  <div class="card-demo">
+    <div class="card">
+      <div class="card-title">普通卡片</div>
+      <div class="card-body">背景色 bg-card，1px 边框，16px 圆角。日常容器用这个。</div>
+    </div>
+    <div class="card card-raised">
+      <div class="card-title">浮起卡片</div>
+      <div class="card-body">背景色 bg-raised，带阴影。弹窗、选中态用。</div>
+    </div>
+    <div class="card card-glow">
+      <div class="card-title" style="color:var(--accent)">月光卡片</div>
+      <div class="card-body">月光辉边框 + glow 阴影。重要信息、高亮态用。</div>
+    </div>
+  </div>
+</div>
+
+<!-- 标签 -->
+<div class="section">
+  <div class="section-title">标签 · Tags</div>
+  <div class="tag-row">
+    <span class="tag tag-accent">月白</span>
+    <span class="tag tag-purple">晚霞</span>
+    <span class="tag tag-success">在线</span>
+    <span class="tag tag-warning">待处理</span>
+    <span class="tag tag-error">离线</span>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="section">
+  <div class="section-title">提示 · Toast</div>
+  <div class="toast-demo">
+    <div class="toast toast-success">✓ 消息已送达</div>
+    <div class="toast toast-warning">⚠ 方丈 WiFi 信号弱</div>
+    <div class="toast toast-error">✕ 连接断开</div>
+  </div>
+</div>
+
+<!-- 播放器 -->
+<div class="section">
+  <div class="section-title">播放器 · Player Bar</div>
+  <div class="player-demo">
+    <div class="player-cover">♫</div>
+    <div class="player-info">
+      <div class="player-name">茶汤</div>
+      <div class="player-artist">郁可唯</div>
+    </div>
+    <div class="player-controls">
+      <button class="player-btn">⏮</button>
+      <button class="player-btn">▶</button>
+      <button class="player-btn">⏭</button>
+    </div>
+  </div>
+</div>
+
+<!-- 状态 -->
+<div class="section">
+  <div class="section-title">状态 · States</div>
+  <div class="state-grid">
+    <div class="state-box">
+      <div class="tide-loader"></div>
+      <div class="state-text">加载中</div>
+    </div>
+    <div class="state-box">
+      <div class="state-icon">∅</div>
+      <div class="state-text">还没有消息</div>
+    </div>
+    <div class="state-box">
+      <div class="moon-breath"></div>
+      <div class="state-text">渡在想你</div>
+    </div>
+    <div class="state-box">
+      <div class="state-icon" style="color:var(--error)">!</div>
+      <div class="state-text">加载失败<br>点击重试</div>
+    </div>
+  </div>
+</div>
+
+<!-- 动效 -->
+<div class="section">
+  <div class="section-title">动效 · Animations</div>
+  <div class="loader-row">
+    <div>
+      <div class="state-text" style="margin-bottom:8px">潮汐加载</div>
+      <div class="tide-loader"></div>
+    </div>
+    <div>
+      <div class="state-text" style="margin-bottom:8px">输入提示</div>
+      <div class="dots-loader"><span></span><span></span><span></span></div>
+    </div>
+    <div>
+      <div class="state-text" style="margin-bottom:8px">月光呼吸</div>
+      <div class="moon-breath"></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  岁月津渡 <span class="moon"></span> Design System v1
+</div>
+
+<script>
+document.querySelectorAll('.btn').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const rect = btn.getBoundingClientRect();
+    btn.style.setProperty('--x', ((e.clientX - rect.left) / rect.width * 100) + '%');
+    btn.style.setProperty('--y', ((e.clientY - rect.top) / rect.height * 100) + '%');
+  });
+});
+</script>

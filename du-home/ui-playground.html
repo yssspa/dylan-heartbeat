@@ -572,17 +572,31 @@ h1 {
 }
 
 .player-btn {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: none;
-  background: var(--accent-soft);
-  color: var(--accent);
-  font-size: 12px;
+  background: none;
+  color: var(--text-dim);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.player-btn:hover { color: var(--accent); }
+
+.player-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.player-btn.play-btn svg {
+  width: 24px;
+  height: 24px;
 }
 
 /* ── 页脚 ── */
@@ -803,9 +817,9 @@ h1 {
       <div class="player-artist">郁可唯</div>
     </div>
     <div class="player-controls">
-      <button class="player-btn">⏮</button>
-      <button class="player-btn">▶</button>
-      <button class="player-btn">⏭</button>
+      <button class="player-btn"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="3" height="14" rx="0.5"/><polygon points="20,5 9,12 20,19"/></svg></button>
+      <button class="player-btn play-btn"><svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></svg></button>
+      <button class="player-btn"><svg viewBox="0 0 24 24"><rect x="18" y="5" width="3" height="14" rx="0.5"/><polygon points="4,5 15,12 4,19"/></svg></button>
     </div>
   </div>
 </div>

@@ -1,0 +1,141 @@
+/*
+ * 岁月津渡 Design Tokens
+ * 深夜海边有月光——所有颜色、尺寸、动效的唯一真相
+ */
+
+:root {
+  /* ── 色板 ── */
+
+  /* 背景层级：从最深到浅 */
+  --color-bg-deep:    #070b14;       /* 夜空最深处 */
+  --color-bg:         #0a0e1a;       /* 主背景 */
+  --color-bg-card:    #131829;       /* 卡片/面板 */
+  --color-bg-raised:  #1a2035;       /* 浮层/弹窗 */
+
+  /* 文字 */
+  --color-text:       #e0e0e0;       /* 主文字 */
+  --color-text-dim:   #8890a0;       /* 次要/辅助文字 */
+  --color-text-mute:  #555d70;       /* 极淡提示 */
+
+  /* 主题色：月白 */
+  --color-accent:     #b8c4e0;       /* 月光银蓝 */
+  --color-accent-soft: rgba(184, 196, 224, 0.15);  /* 月光晕染 */
+  --color-accent-dim: rgba(184, 196, 224, 0.08);   /* 极淡月光 */
+
+  /* 辅助色：淡紫 */
+  --color-purple:     #c4b5d4;       /* 晚霞紫 */
+  --color-purple-soft: rgba(196, 181, 212, 0.12);
+
+  /* 功能色 */
+  --color-success:    #7ec8a0;       /* 潮平 */
+  --color-warning:    #e0c078;       /* 灯火 */
+  --color-error:      #d4787a;       /* 礁石 */
+
+  /* 气泡 */
+  --color-bubble-user: #1e2a4a;      /* 岁岁的气泡 */
+  --color-bubble-du:   #1a1f30;      /* 渡的气泡 */
+
+  /* 边框与分割 */
+  --color-border:     rgba(255, 255, 255, 0.06);
+  --color-border-focus: rgba(184, 196, 224, 0.3);
+
+  /* ── 字体 ── */
+  --font-body:        "LXGW WenKai", -apple-system, "PingFang SC",
+                      "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --font-display:     "LXGW WenKai", serif;  /* 标题/展示用 */
+
+  --font-size-xs:     11px;
+  --font-size-sm:     12px;
+  --font-size-base:   14px;
+  --font-size-md:     15px;
+  --font-size-lg:     17px;
+  --font-size-xl:     20px;
+  --font-size-2xl:    24px;
+
+  --font-weight-light:   300;
+  --font-weight-regular: 400;
+  --font-weight-medium:  500;
+
+  --line-height-tight:   1.3;
+  --line-height-base:    1.6;
+  --line-height-loose:   1.8;
+
+  --letter-spacing-tight:  0.5px;
+  --letter-spacing-normal: 1px;
+  --letter-spacing-wide:   2px;
+
+  /* ── 间距 ── */
+  --space-4:   4px;
+  --space-8:   8px;
+  --space-12:  12px;
+  --space-16:  16px;    /* 基础间距 / 页面侧边距 */
+  --space-20:  20px;
+  --space-24:  24px;
+  --space-32:  32px;
+  --space-48:  48px;
+
+  /* ── 圆角 ── */
+  --radius-sm:    8px;
+  --radius-md:    12px;
+  --radius-lg:    16px;
+  --radius-xl:    20px;
+  --radius-full:  9999px;  /* 药丸/圆形 */
+
+  /* ── 阴影 ── */
+  --shadow-soft:    0 2px 12px rgba(0, 0, 0, 0.3);
+  --shadow-float:   0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-glow:    0 0 16px rgba(184, 196, 224, 0.1);  /* 月光辉 */
+
+  /* ── 动效 ── */
+  --duration-fast:   150ms;
+  --duration-normal: 250ms;
+  --duration-slow:   400ms;
+  --duration-ripple: 600ms;
+
+  --ease-default:    cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce:     cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-tide:       cubic-bezier(0.45, 0, 0.15, 1);    /* 潮汐感 */
+
+  /* ── 布局 ── */
+  --header-height:   52px;
+  --tab-height:      40px;
+  --input-bar-height: 56px;
+  --safe-bottom:     max(10px, env(safe-area-inset-bottom));
+
+  /* ── 组件 Token ── */
+
+  /* 按钮 */
+  --btn-height:      36px;
+  --btn-radius:      var(--radius-full);
+  --btn-font-size:   var(--font-size-base);
+
+  /* 输入框 */
+  --input-radius:    var(--radius-xl);
+  --input-bg:        var(--color-bg);
+  --input-border:    var(--color-border);
+  --input-font-size: var(--font-size-base);
+
+  /* 气泡 */
+  --bubble-radius:   var(--radius-lg);
+  --bubble-padding:  10px 14px;
+  --bubble-font-size: var(--font-size-base);
+  --bubble-tail-radius: 4px;   /* 尾巴那个小圆角 */
+}
+
+/* ── 涟漪动画（交互键用） ── */
+@keyframes ripple {
+  0%   { transform: scale(0); opacity: 0.4; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+/* ── 潮汐加载 ── */
+@keyframes tide {
+  0%, 100% { transform: translateX(-100%); }
+  50%      { transform: translateX(100%); }
+}
+
+/* ── 月光呼吸 ── */
+@keyframes moonbreath {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 1; }
+}
